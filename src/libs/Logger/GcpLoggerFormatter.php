@@ -66,7 +66,6 @@ class GcpLoggerFormatter extends JsonFormatter
       'CRITICAL' => 'critical',
       'ERROR' => 'error',
       'WARNING' => 'warning',
-      'DEBUG' => 'notice',
       'INFO' => 'info',
       'DEBUG' => 'debug',
     ];
