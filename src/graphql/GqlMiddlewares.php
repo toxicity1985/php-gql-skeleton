@@ -2,8 +2,6 @@
 
 namespace Vertuoza\Api\Graphql;
 
-use function React\Promise\resolve;
-
 use GraphQL\Executor\ExecutionResult;
 use GraphQL\GraphQL;
 use GraphQL\Server\ServerConfig;
@@ -18,6 +16,8 @@ use React\Http\Message\ServerRequest;
 use Vertuoza\Api\Graphql\Errors\GqlErrorHandler;
 use Vertuoza\Libs\Logger\ApplicationLogger;
 use Vertuoza\Libs\Logger\LogContext;
+
+use function React\Promise\resolve;
 
 class GqlMiddlewares
 {
@@ -37,7 +37,7 @@ class GqlMiddlewares
         return strpos($request->getUri()->getPath(), $prefix) === 0;
     }
 
-    static function sandbox()
+    public static function sandbox()
     {
         return function (ServerRequest $request, callable $next) {
             if (self::isSandboxRoute($request)) {
@@ -50,12 +50,13 @@ class GqlMiddlewares
         };
     }
 
-    static function schema(\GraphQL\Executor\Promise\PromiseAdapter $graphQLPromiseAdapter, PromiseAdapterInterface $dataLoaderPromiseAdapter)
+    public static function schema(\GraphQL\Executor\Promise\PromiseAdapter $graphQLPromiseAdapter, PromiseAdapterInterface $dataLoaderPromiseAdapter)
     {
         $query = new Query();
         // $mutation = new Mutation();
 
-        $schema = new Schema((
+        $schema = new Schema(
+            (
                 new SchemaConfig())
                 ->setQuery($query)
                 ->setTypeLoader([Types::class, 'byTypename'])

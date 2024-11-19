@@ -16,5 +16,5 @@ class UseCasesFactory
     {
         $this->unitType = new UnitTypeUseCases($userContext, $repositories);
         $this->collaboratorType = new CollaboratorTypeUseCase($userContext, $repositories);
-  }
+    }
 }

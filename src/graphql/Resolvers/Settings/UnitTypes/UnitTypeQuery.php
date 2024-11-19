@@ -8,10 +8,9 @@ use Vertuoza\Api\Context\VertuozaContext;
 use Vertuoza\Api\Graphql\Context\RequestContext;
 use Vertuoza\Api\Graphql\Types;
 
-
 class UnitTypeQuery
 {
-    static function get()
+    public static function get()
     {
         return [
             'unitTypeById' => [

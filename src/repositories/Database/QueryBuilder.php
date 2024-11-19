@@ -4,7 +4,6 @@ namespace Vertuoza\Repositories\Database;
 
 use Illuminate\Database\Capsule\Manager as CapsuleManager;
 
-
 class QueryBuilder extends CapsuleManager
 {
     public function __construct($charset = null)

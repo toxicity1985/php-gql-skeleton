@@ -93,3 +93,4 @@ override.tf.json
 terraform.rc
 credentials.json
 *.creds.json
+/.php-cs-fixer.cache

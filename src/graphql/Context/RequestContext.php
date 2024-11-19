@@ -22,7 +22,7 @@ class RequestContext
     public UseCasesFactory $useCases;
     public array $headerContext;
 
-    function addCookie(string $cookieName, string $cookieValue, int $exp = 0, string $domain = "", string $path = "/", bool $secure = false, bool $httpOnly = false, string $sameSite = "Lax")
+    public function addCookie(string $cookieName, string $cookieValue, int $exp = 0, string $domain = "", string $path = "/", bool $secure = false, bool $httpOnly = false, string $sameSite = "Lax")
     {
         $expires = gmdate('D, d M Y H:i:s T', $exp); // Converting the expiration time to the correct format
         $path = "/";
@@ -41,12 +41,12 @@ class RequestContext
         $this->headerContext[] = ["Set-Cookie" => $cookieHeader];
     }
 
-    function isLogged(): bool
+    public function isLogged(): bool
     {
         return isset($this->userContext) && $this->userContext->isLogged();
     }
 
-    static function middleware(PromiseAdapterInterface $dataLoaderPromiseAdapter)
+    public static function middleware(PromiseAdapterInterface $dataLoaderPromiseAdapter)
     {
         return function (ServerRequestInterface $request, callable $next) use ($dataLoaderPromiseAdapter) {
             // Recreate a new connection each http call/

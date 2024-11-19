@@ -9,6 +9,7 @@ use Vertuoza\Repositories\AbstractRepository;
 use Vertuoza\Repositories\Database\QueryBuilder;
 use Vertuoza\Repositories\Settings\CollaboratorTypes\Models\CollaboratorTypeMapper;
 use Vertuoza\Repositories\Settings\CollaboratorTypes\Models\CollaboratorTypeModel;
+
 use function React\Async\async;
 
 class CollaboratorTypeRepository extends AbstractRepository
@@ -69,8 +70,9 @@ class CollaboratorTypeRepository extends AbstractRepository
                 ->where('name', $name)
                 ->whereNull('deleted_at')
                 ->where(function ($query) use ($excludeId) {
-                    if (isset($excludeId))
+                    if (isset($excludeId)) {
                         $query->where('id', '!=', $excludeId);
+                    }
                 })
                 ->where(function ($query) use ($tenantId) {
                     $query->where(CollaboratorTypeModel::getTenantColumnName(), '=', $tenantId)
