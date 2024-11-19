@@ -15,7 +15,7 @@ class UnitTypeMutation extends ObjectType
             'createUnitType' => [
                 'type' => Types::get(UnitType::class),
                 'args' => [
-                    'input' => Type::nonNull(Types::get(UnitInputType::class)),
+                    'input' => Type::nonNull(Types::get(UnitTypeInput::class)),
                 ],
                 'resolve' => static fn($rootValue, $args, RequestContext $context) => $context->useCases->unitType->unitTypeCreate->handle($args['input']['name'])
             ]

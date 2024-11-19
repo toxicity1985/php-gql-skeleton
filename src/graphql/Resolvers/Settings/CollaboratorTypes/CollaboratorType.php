@@ -25,11 +25,7 @@ class CollaboratorType extends ObjectType
                 'first_name' => [
                     'description' => "firstname of collaborator",
                     'type' => new NonNull(Types::string())
-                ],
-                'isSystem' => [
-                    'description' => "To know if the collaborator type has been created by the user or is a system unit type of Vertuoza",
-                    'type' => new \GraphQL\Type\Definition\NonNull(Types::boolean())
-                ],
+                ]
             ],
         ]);
     }

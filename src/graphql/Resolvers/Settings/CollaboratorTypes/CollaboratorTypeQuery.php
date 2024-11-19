@@ -18,7 +18,14 @@ class CollaboratorTypeQuery
                     'id' => new NonNull(Types::string()),
                 ],
                 'resolve' => static fn ($rootValue, $args, RequestContext $context) => $context->useCases->collaboratorType->collaboratorTypeById
-                    ->handle($args['id'], $context)
+                    ->handle($args['id'])
+            ],
+            'collaborators' => [
+                'type' => new NonNull(new ListOfType(new NonNull(Types::get(CollaboratorType::class)))),
+                'resolve' => static fn ($rootValue, $args, RequestContext $context)
+                => $context->useCases->collaboratorType
+                    ->collaboratorsTypesFindMany
+                    ->handle()
             ],
         ];
     }

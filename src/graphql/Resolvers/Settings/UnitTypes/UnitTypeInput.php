@@ -6,7 +6,7 @@ use GraphQL\Type\Definition\InputObjectType;
 use GraphQL\Type\Definition\NonNull;
 use Vertuoza\Api\Graphql\Types;
 
-class UnitInputType extends InputObjectType
+class UnitTypeInput extends InputObjectType
 {
     public function __construct()
     {
