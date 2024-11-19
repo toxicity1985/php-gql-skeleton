@@ -21,7 +21,7 @@ final class Query extends ObjectType
                         }
                     ],
                     ...UnitTypeQuery::get(),
-                    ...CollaboratorTypeQuery::get()
+                    ...CollaboratorTypeQuery::get(),
                 ];
             }
         ];

@@ -106,6 +106,7 @@ class UnitTypeRepository extends AbstractRepository
         $newId = $this->getQueryBuilder()->insertGetId(
             UnitTypeMapper::serializeCreate($data, $tenantId)
         );
+
         return $newId;
     }
 
